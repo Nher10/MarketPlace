@@ -6,7 +6,7 @@ const AdminMenu = () => {
     <>
       <div className="text-center">
         <h4>Admin Panel</h4>
-        <div className="list-group">
+        <div className="list-group m-3">
           <NavLink
             to="/dashboard/admin/create-category"
             className="list-group-item list-group-item-action"
@@ -18,6 +18,12 @@ const AdminMenu = () => {
             className="list-group-item list-group-item-action"
           >
             Create Product
+          </NavLink>
+          <NavLink
+            to="/dashboard/admin/products"
+            className="list-group-item list-group-item-action"
+          >
+            Products
           </NavLink>
           <NavLink
             to="/dashboard/admin/users"
