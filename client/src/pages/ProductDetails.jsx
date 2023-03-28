@@ -65,7 +65,7 @@ const ProductDetails = () => {
         )}
         <div className="d-flex flex-wrap">
           {relatedProducts?.map((product, key) => (
-            <div className="card m-3" style={{ width: "15rem" }} key={key}>
+            <div className="card m-3" style={{ width: "18rem" }} key={key}>
               <img
                 src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
                 className="card-img-top"
@@ -79,11 +79,14 @@ const ProductDetails = () => {
                   {product.description.substring(0, 60)}...
                 </p>
                 <p className="card-text"> ₱ {product.price}</p>
-                <div>
-                  <button className="btn btn-secondary ms-1">
-                    Add To Cart
-                  </button>
-                </div>
+
+                <button
+                  className="btn btn-primary ms-1"
+                  onClick={() => navigate(`/product/${product.slug}`)}
+                >
+                  More Details
+                </button>
+                <button className="btn btn-secondary ms-1">Add To Cart</button>
               </div>
             </div>
           ))}
