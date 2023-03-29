@@ -70,7 +70,7 @@ const Login = () => {
           <div className="mb-3">
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary forgot-btn"
               onClick={() => {
                 navigate("/forgot-password");
               }}

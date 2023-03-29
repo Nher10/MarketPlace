@@ -26,33 +26,35 @@ const Products = () => {
     getAllProducts();
   }, []);
   return (
-    <Layout>
-      <div className="row">
-        <div className="col-md-3">
-          <AdminMenu />
-        </div>
-        <div className="col-md-9">
-          <h1 className="text-center">All Products List</h1>
-          <div className="d-flex flex-wrap">
-            {products.map((product) => (
-              <Link
-                key={product._id}
-                to={`/dashboard/admin/products/${product.slug}`}
-                className="product-link"
-              >
-                <div className="card m-2" style={{ width: "18rem" }}>
-                  <img
-                    src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
-                    className="card-img-top"
-                    alt={product.name}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{product.name}</h5>
-                    <p className="card-text">{product.description}</p>
+    <Layout title={"Dashboard-Products"}>
+      <div className="container-fluid m-3 p-3">
+        <div className="row">
+          <div className="col-md-3">
+            <AdminMenu />
+          </div>
+          <div className="col-md-9">
+            <h1 className="text-center">All Products List</h1>
+            <div className="d-flex flex-wrap">
+              {products.map((product) => (
+                <Link
+                  key={product._id}
+                  to={`/dashboard/admin/products/${product.slug}`}
+                  className="product-link"
+                >
+                  <div className="card m-2" style={{ width: "18rem" }}>
+                    <img
+                      src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                      className="card-img-top"
+                      alt={product.name}
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">{product.name}</h5>
+                      <p className="card-text">{product.description}</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

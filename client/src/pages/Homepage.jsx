@@ -6,6 +6,7 @@ import { Prices } from "../components/Prices";
 import { useCart } from "../context/cart";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import "../styles/Homepage.css";
 
 const Homepage = () => {
   const [products, setProducts] = useState([]);
@@ -116,10 +117,10 @@ const Homepage = () => {
   };
   return (
     <Layout title={"All Products - Best Offers"}>
-      <div className="row mt-3">
-        <div className="col-md-3">
+      <div className="container-fluid row mt-3 home-page">
+        <div className="col-md-3 filters">
           <h4 className="text-center">Filter By Category</h4>
-          <div className="d-flex flex-column justify-content-center align-items-center">
+          <div className="d-flex flex-column">
             {categories?.map((category) => (
               <Checkbox
                 key={category._id}
@@ -130,8 +131,8 @@ const Homepage = () => {
             ))}
           </div>
           {/* Price Filter */}
-          <h4 className="text-center">Filter By Price</h4>
-          <div className="d-flex flex-column justify-content-center align-items-center">
+          <h4 className="text-center mt-4">Filter By Price</h4>
+          <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((price) => (
                 <div key={price._id}>
@@ -140,9 +141,9 @@ const Homepage = () => {
               ))}
             </Radio.Group>
           </div>
-          <div className="d-flex flex-column justify-content-center align-items-center">
+          <div className="d-flex flex-column">
             <button
-              className="btn btn-danger mt-3"
+              className="btn btn-danger"
               onClick={() => window.location.reload()}
             >
               Reset Filters
@@ -152,7 +153,7 @@ const Homepage = () => {
         <div className="col-md-9">
           {/* {JSON.stringify(radio, null, 4)} */}
           <h1 className="text-center">All Products</h1>
-          <div className="d-flex flex-wrap">
+          <div className="d-flex align-items-center justify-content-center flex-wrap">
             {products.map((product, key) => (
               <div className="card m-2" style={{ width: "18rem" }} key={key}>
                 <img
@@ -161,22 +162,27 @@ const Homepage = () => {
                   alt={product.name}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">
-                    {product.name.substring(0, 20)}...
-                  </h5>
-                  <p className="card-text">
+                  <div className="card-name-price">
+                    <h5 className="card-title">{product.name}</h5>
+                    <h5 className="card-title card-price">
+                      {product.price.toLocaleString("PHP", {
+                        style: "currency",
+                        currency: "PHP",
+                      })}
+                    </h5>
+                  </div>
+                  <p className="card-text ">
                     {product.description.substring(0, 60)}...
                   </p>
-                  <p className="card-text"> ₱ {product.price}</p>
                   <div>
                     <button
-                      className="btn btn-primary ms-1"
+                      className="btn btn-primary ms-1 mb-1"
                       onClick={() => navigate(`/product/${product.slug}`)}
                     >
                       More Details
                     </button>
                     <button
-                      className="btn btn-secondary ms-1"
+                      className="btn btn-dark ms-1"
                       onClick={() => {
                         setCart([...cart, product]);
                         localStorage.setItem(

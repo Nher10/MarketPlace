@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 import { useParams, useNavigate } from "react-router-dom";
+import "../styles/CategoryProductStyle.css";
 
 const CategoryProduct = () => {
   const [product, setProduct] = useState([]);
@@ -26,11 +27,11 @@ const CategoryProduct = () => {
   };
   return (
     <Layout>
-      <div className="container mt-3">
+      <div className="container mt-3 category">
         <h4 className="text-center">Category - {category?.name}</h4>
         <h6 className="text-center">{product?.length} result(s) found</h6>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-9 offset-1">
             <div className="d-flex flex-wrap">
               {product.map((product, key) => (
                 <div className="card m-2" style={{ width: "18rem" }} key={key}>
@@ -40,23 +41,32 @@ const CategoryProduct = () => {
                     alt={product.name}
                   />
                   <div className="card-body">
-                    <h5 className="card-title">
-                      {product.name.substring(0, 20)}...
-                    </h5>
+                    <div className="card-name-price">
+                      <h5 className="card-title">{product.name}</h5>
+                      <h5 className="card-title card-price">
+                        {product.price.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })}
+                      </h5>
+                    </div>
+
                     <p className="card-text">
                       {product.description.substring(0, 60)}...
                     </p>
-                    <p className="card-text"> ₱ {product.price}</p>
-                    <div>
+                    <div className="card-name-price">
                       <button
                         className="btn btn-primary ms-1"
                         onClick={() => navigate(`/product/${product.slug}`)}
                       >
                         More Details
                       </button>
-                      <button className="btn btn-secondary ms-1">
+                    </div>
+
+                    <div>
+                      {/* <button className="btn btn-secondary ms-1">
                         Add To Cart
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
