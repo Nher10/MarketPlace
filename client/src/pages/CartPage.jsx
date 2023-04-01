@@ -47,7 +47,7 @@ const CartPage = () => {
   const getToken = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/product/braintree/token"
+        "https://timecraft.onrender.com/api/v1/product/braintree/token"
       );
       setClientToken(data?.clientToken);
     } catch (error) {
@@ -64,7 +64,7 @@ const CartPage = () => {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/product/braintree/payment",
+        "https://timecraft.onrender.com/api/v1/product/braintree/payment",
         {
           nonce,
           cart,
@@ -104,7 +104,7 @@ const CartPage = () => {
               <div className="row m-2 card flex-row mb-2 p-3" key={product._id}>
                 <div className="col-md-4">
                   <img
-                    src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                    src={`https://timecraft.onrender.com/api/v1/product/product-photo/${product._id}`}
                     className="card-img-top"
                     alt={product.name}
                     style={{ width: "100px", height: "100px" }}

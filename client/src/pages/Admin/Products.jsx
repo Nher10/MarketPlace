@@ -12,7 +12,7 @@ const Products = () => {
   const getAllProducts = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/product/get-product"
+        "https://timecraft.onrender.com/api/v1/product/get-product"
       );
       setProducts(data.products);
     } catch (error) {
@@ -43,7 +43,7 @@ const Products = () => {
                 >
                   <div className="card m-2" style={{ width: "18rem" }}>
                     <img
-                      src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                      src={`https://timecraft.onrender.com/api/v1/product/product-photo/${product._id}`}
                       className="card-img-top"
                       alt={product.name}
                     />

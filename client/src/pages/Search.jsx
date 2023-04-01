@@ -18,7 +18,7 @@ const Search = () => {
             {values.results.map((product, key) => (
               <div className="card m-2" style={{ width: "18rem" }} key={key}>
                 <img
-                  src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                  src={`https://timecraft.onrender.com/api/v1/product/product-photo/${product._id}`}
                   className="card-img-top"
                   alt={product.name}
                 />

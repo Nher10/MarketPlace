@@ -17,7 +17,7 @@ const CategoryProduct = () => {
   const getProductsByCategory = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/product-category/${params.slug}`
+        `https://timecraft.onrender.com/api/v1/product/product-category/${params.slug}`
       );
       setProduct(data?.product);
       setCategory(data?.category);
@@ -36,7 +36,7 @@ const CategoryProduct = () => {
               {product.map((product, key) => (
                 <div className="card m-2" style={{ width: "18rem" }} key={key}>
                   <img
-                    src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                    src={`https://timecraft.onrender.com/api/v1/product/product-photo/${product._id}`}
                     className="card-img-top"
                     alt={product.name}
                   />

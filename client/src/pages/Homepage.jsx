@@ -23,7 +23,7 @@ const Homepage = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/category/get-category"
+        "https://timecraft.onrender.com/api/v1/category/get-category"
       );
       if (data?.success) {
         setCategories(data?.category);
@@ -43,7 +43,7 @@ const Homepage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/product-list/${page}`
+        `https://timecraft.onrender.com/api/v1/product/product-list/${page}`
       );
       setLoading(false);
       setProducts(data.products);
@@ -57,7 +57,7 @@ const Homepage = () => {
   const getTotal = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/product/product-count"
+        "https://timecraft.onrender.com/api/v1/product/product-count"
       );
       setTotal(data?.total);
     } catch (error) {
@@ -74,7 +74,7 @@ const Homepage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/product-list/${page}`
+        `https://timecraft.onrender.com/api/v1/product/product-list/${page}`
       );
       setLoading(false);
       setProducts([...products, ...data?.products]);
@@ -107,7 +107,7 @@ const Homepage = () => {
   const filterProduct = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/v1/product/product-filters",
+        "https://timecraft.onrender.com/api/v1/product/product-filters",
         { checked, radio }
       );
       setProducts(data?.products);
@@ -157,7 +157,7 @@ const Homepage = () => {
             {products.map((product, key) => (
               <div className="card m-2" style={{ width: "18rem" }} key={key}>
                 <img
-                  src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                  src={`https://timecraft.onrender.com/api/v1/product/product-photo/${product._id}`}
                   className="card-img-top"
                   alt={product.name}
                 />

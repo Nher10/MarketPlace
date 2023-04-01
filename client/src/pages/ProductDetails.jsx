@@ -20,7 +20,7 @@ const ProductDetails = () => {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/get-product/${params.slug}`
+        `https://timecraft.onrender.com/api/v1/product/get-product/${params.slug}`
       );
       setProduct(data?.product);
       getSimilarProduct(data?.product._id, data?.product.category._id);
@@ -34,7 +34,7 @@ const ProductDetails = () => {
   const getSimilarProduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/related-product/${pid}/${cid}`
+        `https://timecraft.onrender.com/api/v1/product/related-product/${pid}/${cid}`
       );
       setRelatedProducts(data?.products);
     } catch (error) {
@@ -45,7 +45,7 @@ const ProductDetails = () => {
     <Layout>
       <div className="row container product-details">
         <img
-          src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+          src={`https://timecraft.onrender.com/api/v1/product/product-photo/${product._id}`}
           className="card-img-top"
           alt={product.name}
           style={{ height: "500px", width: "500px" }}
@@ -76,7 +76,7 @@ const ProductDetails = () => {
           {relatedProducts?.map((product, key) => (
             <div className="card m-3" style={{ width: "18rem" }} key={key}>
               <img
-                src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                src={`https://timecraft.onrender.com/api/v1/product/product-photo/${product._id}`}
                 className="card-img-top"
                 alt={product.name}
               />
